@@ -13,7 +13,7 @@ read main_DEPTHimage.m and main_IRimage.m as two main function
 
 1) how to get raw data of depth camera
 
-   refer to https://github.com/zwz14/TableKeyBoard/README.md
+   refer to https://github.com/zwz14/TableKeyBoard/blob/master/README.md
 2) how to convert depth data from hololens to real depth
 
    refer to https://github.com/Microsoft/HoloLensForCV/issues/63 answer of 'Huangying-Zhan'
