@@ -1,3 +1,5 @@
+% 在非手有效区域找若干点拟合平面，计算点和平面距离，将一定阈值以内的
+% 点定义为手的点。（效果并不好）
 function[seed_cluster_test,plane_distance,plane_value] = hand_recognition_test(data_x, data_y, z_image_double)
 [m,n] = size(z_image_double);
 threshold = 1;
@@ -19,10 +21,12 @@ end
 % 统计距离分布时删去无效点
 plane_distance_line = plane_distance;
 plane_distance_line(z_image_valid) = [];
-figure, histogram(plane_distance_line,300);
+% 显示灰度值分布
+figure('NumberTitle','off','Name','平面距离分布'), histogram(plane_distance_line,300);
+% 显示识别手部区域
 plane_distance_class = plane_distance;
-thres = 0.65;
+thres = 0.99;
 plane_distance_class(plane_distance_class > thres) = 1;
 plane_distance_class(plane_distance_class <= thres) = 0;
-figure,imshow(plane_distance_class), impixelinfo;
+figure('NumberTitle','off','Name','识别手部'),imshow(plane_distance_class), impixelinfo;
 end

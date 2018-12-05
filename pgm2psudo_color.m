@@ -1,14 +1,15 @@
+% 将深度图转化为伪彩色图
 function[output_rgb_image, max_pixel, min_pixel] = pgm2psudo_color(input_image)
 image = input_image;
 min_pixel = min(image(:));
-%min_pixel = 300;
+% 经验值可以设置min_pixel = 300;
 % 自动按照灰度阈值，得到图像二值化矩阵
 level = graythresh(image);
 judge = im2bw(image,level);
 temp_image = image;
 temp_image(judge == 1) = 0;
 max_pixel = max(temp_image(:));
-%max_pixel = 800;
+% 经验值可以设置max_pixel = 800;
 A = image - min_pixel;
 [row, col] = size(A);
 color_range = double(max_pixel - min_pixel);
