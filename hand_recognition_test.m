@@ -25,8 +25,10 @@ plane_distance_line(z_image_valid) = [];
 figure('NumberTitle','off','Name','平面距离分布'), histogram(plane_distance_line,300);
 % 显示识别手部区域
 plane_distance_class = plane_distance;
-thres = 0.99;
-plane_distance_class(plane_distance_class > thres) = 1;
-plane_distance_class(plane_distance_class <= thres) = 0;
+thres = 25;
+logical1 = plane_distance_class > thres;
+logical2 = plane_distance_class <= thres;
+plane_distance_class(logical1) = 1;
+plane_distance_class(logical2) = 0;
 figure('NumberTitle','off','Name','识别手部'),imshow(plane_distance_class), impixelinfo;
 end
